@@ -1,0 +1,19 @@
+services:
+  TTT:
+    image: vllm/vllm-openai:latest
+    container_name: TTT
+    runtime: nvidia
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HUGGING_FACE_HUB_TOKEN}
+    ports:
+      - "8001:8000" 
+    ipc: host # sets the container's inter-process communication (IPC) namespace to the host's, allowing the container to access the host's shared memory (/dev/shm). This is required for vLLM when using tensor parallelism
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command:
+      - --gpu_memory_utilization=0.2
+      - --model
+      - HuggingFaceTB/SmolLM2-360M-Instruct
+      - --max-model-len=1000 
+      # maximum total number of tokens (input + output) If you set it to 1000, you might use 800 tokens for your prompt and only have 200 left 
+      # for the response. max_tokens in your API call is just the output limit for that specific request.

@@ -1,5 +1,8 @@
 # VLLM_text Setup Guide
 
+This is part of youtube video here: https://www.youtube.com/watch?v=tO3WOE9sZV0
+and part of playlist: https://www.youtube.com/playlist?list=PLKQlkwtnLtvIoovO4LNXYpzLwG0rGPIK_
+
 ## Requirements
 
 - NVIDIA driver supporting CUDA 12.8 (`nvidia-smi` should show CUDA 12.8 or higher)
